@@ -1,0 +1,39 @@
+name: Print Dates on Various OSs
+on:
+  push:
+    branches: [master]
+
+jobs:
+  date-ubuntu:
+    name: Print date on Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: print date
+        runs: date
+  date-macos:
+    name: Print date on MacOs
+    runs-on: macos-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: print date
+        runs: date
+  date-windows:
+    name: Print date on Windows
+    runs-on: windows-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: print date
+        runs: Get-Date
+  dependent-job:
+    name: wait for other job to finish...
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: finally
+        runs: echo Congratulations 😀!
+    needs: [date-ubuntu, date-macos, date-macos]
