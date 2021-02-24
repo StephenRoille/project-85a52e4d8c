@@ -1,0 +1,16 @@
+name: Linter
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Python Syntax Checker
+        uses: cclauss/Find-Python-syntax-errors-action@v0.2.0
