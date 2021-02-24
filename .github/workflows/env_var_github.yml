@@ -1,16 +1,22 @@
 name: Print GITHUB Environment Variables
+env:
+  MY_WORFLOW_ENVVAR: "WORKFLOW environment variable"
 on:
   push:
     branches: [master]
 
 jobs:
   print:
+    env:
+      MY_JOB_ENVVAR: "JOB environment variable"
     name: print environment variable
     runs-on: ubuntu-latest
     steps:
       - name: Step one
         uses: actions/checkout@v2
       - name: Step two
+        env:
+          MY_STEP_ENVVAR: "STEP environment variable"
         run: |
           echo CI: $CI
           echo GITHUB_WORKFLOW: $GITHUB_WORKFLOW
@@ -30,3 +36,11 @@ jobs:
           echo GITHUB_SERVER_URL: $GITHUB_SERVER_URL
           echo GITHUB_API_URL: $GITHUB_API_URL
           echo GITHUB_GRAPHQL_URL: $GITHUB_GRAPHQL_URL
+          echo "----------------------------------------"
+          echo $MY_WORFLOW_ENVVAR
+          echo $MY_JOB_ENVVAR
+          echo $MY_STEP_ENVVAR
+          echo "----------------------------------------"
+          echo "${{ env.MY_WORFLOW_ENVVAR }}"
+          echo "${{ env.MY_JOB_ENVVAR }}"
+          echo "${{ env.MY_STEP_ENVVAR }} NOT DEFINED!!"
