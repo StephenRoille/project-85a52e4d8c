@@ -33,4 +33,4 @@ jobs:
     steps:
       - name: Hello from Docker
         uses: docker://hello-world:latest
-        needs: [job1, job2]
+    needs: [job1, job2]
