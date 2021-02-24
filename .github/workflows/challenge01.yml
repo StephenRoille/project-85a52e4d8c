@@ -11,7 +11,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: print date
-        runs: date
+        run: date
   date-macos:
     name: Print date on MacOs
     runs-on: macos-latest
@@ -19,7 +19,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: print date
-        runs: date
+        run: date
   date-windows:
     name: Print date on Windows
     runs-on: windows-latest
@@ -27,7 +27,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: print date
-        runs: Get-Date
+        run: Get-Date
   dependent-job:
     name: wait for other job to finish...
     runs-on: ubuntu-latest
@@ -35,5 +35,5 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: finally
-        runs: echo Congratulations 😀!
-    needs: [date-ubuntu, date-macos, date-macos]
+        run: echo Congratulations 😀!
+    needs: [date-ubuntu, date-macos, date-windows]
