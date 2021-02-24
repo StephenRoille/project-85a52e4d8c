@@ -31,9 +31,9 @@ jobs:
   dependent-job:
     name: wait for other job to finish...
     runs-on: ubuntu-latest
+    needs: [date-ubuntu, date-macos, date-windows]
     steps:
       - name: checkout
         uses: actions/checkout@v2
       - name: finally
         run: echo Congratulations 😀!
-    needs: [date-ubuntu, date-macos, date-windows]
