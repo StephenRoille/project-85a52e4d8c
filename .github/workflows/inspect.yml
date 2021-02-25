@@ -1,0 +1,18 @@
+name: List directories
+on: 
+  push:
+    branches: [master]
+  commit:
+    branches: [master]
+jobs:
+  - pwd:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name:
+      run: pwd
+  - ls:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name:
+      run: ls -al
+    
