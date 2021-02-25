@@ -3,12 +3,18 @@ on:
   push:
     branches: [master]
 jobs:
-  - pwd:
+- pwd:
+  - name: Print working directory
+  - runs-on: ubuntu-latest
+  - steps:
     - name: checkout
       uses: actions/checkout@v2
     - name:
       run: pwd
-  - ls:
+- ls:
+  - name: List directory content
+  - runs-on: ubuntu-latest
+  - steps:
     - name: checkout
       uses: actions/checkout@v2
     - name:
